@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
 
     <modules>
-
         <module>licole-common</module>
         <module>licole-user</module>
         <module>licole-gateway</module>
@@ -23,6 +22,8 @@
         <spring-boot-maven-plugin.version>2.6.8</spring-boot-maven-plugin.version>
         <hutool-all.version>5.8.29</hutool-all.version>
         <hutool-json.version>5.8.31</hutool-json.version>
+        <shiro.version>1.13.0</shiro.version>
+        <redisson.version>3.34.0</redisson.version>
         <java.version>8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -74,6 +75,29 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-json</artifactId>
                 <version>${hutool-json.version}}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring-boot-starter</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.redisson</groupId>
+                        <!-- 使用 redisson-spring-data-27 替代，解决 Tuple NoClassDefFoundError 报错 -->
+                        <artifactId>redisson-spring-data-33</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- Springboot 2.x 只能使用redisson2x -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-data-27</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

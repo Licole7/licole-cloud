@@ -7,6 +7,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+/**
+ * 分页参数
+ */
 @Data
 public class PageParam implements Serializable {
 
